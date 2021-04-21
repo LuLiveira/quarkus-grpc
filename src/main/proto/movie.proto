@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+
+        option java_multiple_files = true;
+        option java_package = "br.com.lucas";
+        option java_outer_classname = "MovieProto";
+
+        package br.com.lucas;
+
+        service Movie {
+            rpc FindById (MovieRequest) returns (MovieResponse) {}
+            rpc FindAll (MovieAllRequest) returns (MovieAllResponse) {}
+        }
+
+        message MovieAllRequest{}
+
+        message MovieAllResponse{
+            repeated MovieResponse movies = 1;
+        }
+
+        message MovieRequest {
+        int32 id = 1;
+        }
+
+        message MovieResponse {
+        string id = 1;
+        string titulo = 2;
+        }
